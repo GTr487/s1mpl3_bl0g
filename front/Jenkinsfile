@@ -6,6 +6,14 @@ pipeline {
         }
     }
 
+
+    stages {
+        stage('CD') {
+            steps{
+                sh 'cd /front'
+        }
+    }
+
     stages {
         stage('Build') {
             steps{
