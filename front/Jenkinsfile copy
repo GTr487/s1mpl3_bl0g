@@ -1,0 +1,22 @@
+agent{
+    docker {
+        image 'node'
+        args '-p 3000:300'
+    }
+}
+
+stages {
+    stage('Build') {
+        steps{
+            sh 'npm install'
+        }
+    }
+}
+
+stages {
+    stage('Serve') {
+        steps{
+            sh 'npm start'
+        }
+    }
+}
