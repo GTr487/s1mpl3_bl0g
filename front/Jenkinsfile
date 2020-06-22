@@ -1,9 +1,23 @@
 pipeline {
-    agent any 
+    agent{
+        docker {
+            image 'node'
+            args '-p 3000:300'
+        }
+    }
+
     stages {
-        stage('Stage 1') {
-            steps {
-                echo 'Hello world!' 
+        stage('Build') {
+            steps{
+                sh 'npm install'
+            }
+        }
+    }
+
+    stages {
+        stage('Serve') {
+            steps{
+                sh 'npm start'
             }
         }
     }
